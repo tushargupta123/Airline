@@ -2,22 +2,22 @@ const { BookingService } = require('../services/index');
 const { StatusCodes } = require('http-status-codes');
 const bookingService = new BookingService();
 
-const {createChannel,publishMessage} = require('../utils/messageQueue');
+const { createChannel, publishMessage } = require('../utils/messageQueue');
 const { REMINDER_BINDING_KEY } = require('../config/serverConfig');
 
 class BookingController {
-
-
-    async sendMessageToQueue(req,res){
+    async sendMessageToQueue(req, res) {
         const channel = await createChannel();
-        const payload = {data:{
-            subject : 'This is a notification from queue 2',
-            content: 'Some queue will subscribe this',
-            recepientEmail: "tushargupta2k3@gmail.com",
-            notificationTime: '2023-06-20T16:51:00'
-        },
-        service: 'CREATE_TICKET'}
-        publishMessage(channel,REMINDER_BINDING_KEY,JSON.stringify(payload));
+        const payload = {
+            data: {
+                subject: 'This is a notification from queue 2',
+                content: 'Some queue will subscribe this',
+                recepientEmail: "tushargupta2k3@gmail.com",
+                notificationTime: '2024-06-20T16:51:00'
+            },
+            service: 'CREATE_TICKET'
+        }
+        publishMessage(channel, REMINDER_BINDING_KEY, JSON.stringify(payload));
         return res.status(StatusCodes.OK).json({
             success: true,
             message: 'Successfully published the event',
@@ -46,6 +46,5 @@ class BookingController {
     }
 
 }
-
 
 module.exports = BookingController;

@@ -3,8 +3,6 @@ const app = express();
 const bodyParser = require('body-parser');
 
 const {PORT} = require('./config/serverConfig');
-
-const {sendBasicEmail} = require('./services/email-service');
 const jobs = require('./utils/job');
 const TicketController = require('./controllers/ticket-controller');
 
@@ -26,14 +24,6 @@ const setupAndStartServer = async() => {
         console.log('Server started on port '+PORT);
 
         // jobs();
-
-        // sendBasicEmail(
-        //     'support@admin.com',
-        //     'tushargupta2k3@gmail.com',
-        //     'This is a testing email',
-        //     'Hey , how are you i hope you like the support'
-        // );
-        
     })
 }
 setupAndStartServer();

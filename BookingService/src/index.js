@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const axios = require('axios');
 
 const {PORT} = require('./config/serverConfig');
 
@@ -14,11 +13,11 @@ const startServer = () => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
 
-    // app.get('/bookingservice/api/v1/home',(req,res) => {
-    //     return res.json({message: "hitting the booking service"})
-    // })
+    app.use('/bookingservice/api/v1/home',(req,res)=>{
+        res.json({message : "Welcome to Bookingservice!"})
+    });
 
-    app.use('/bookingservice/api',apiRoutes);
+    app.use('/api',apiRoutes);
 
     app.listen(PORT,async() => {
         console.log("server started on port " + PORT);

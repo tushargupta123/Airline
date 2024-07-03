@@ -12,13 +12,14 @@ const setupJobs = () => {
                 text:email.content
             },async(err,data) => {
                 if(err){
+                    await emailService.updateTicket(email.id,{status:'FAILED'});
                     console.log(err);
                 }else{
                     console.log(data);
                     await emailService.updateTicket(email.id,{status:'SUCCESS'});
+                    console.log("email sent")
                 }
             })
-            console.log("email sent")
         })
     })
 }
