@@ -1,0 +1,41 @@
+npm i sequelize sequelize-cli mysql2
+npm init in root folder
+bring every folder inside src folder
+configure config.json
+cd src
+npx sequelize db:create
+put config.json in .env
+
+To create a table 
+--> npx sequelize model:generate --name City --attributes name:String  
+--> npx sequelize db:migrate
+
+To interact with the database(model)
+--> create new file inside repository folder.
+
+To delete migration files
+--> npx sequelize db:migrate:undo
+
+If we want to change any attributes properties then we have to change it inside both models folder and migrations folder and then delete previous migrations and make new one.
+
+Create functions for insertion ,deletion ,etc in repository folder usign sequelize queries.
+
+Create services from repository  .
+
+create controllers from repository
+
+Create routes
+
+If we have to any association we will do it in models file of those tables
+-> also we have to bind keys in migrations file
+
+after every change in migration file we have to again migrate it to sync it with mysql
+
+
+Seeders -> it is used to give initial value to some attributes
+--> npx sequelize seed:generate --name add-airports
+after adding seed data
+--> npx sequelize db:seed:all
+
+If we want to add new fields in existing migration
+--> npx sequelize migration:create --name add_new_fields
