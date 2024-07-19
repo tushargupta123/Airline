@@ -19,4 +19,4 @@ The Airline Project is a backend application designed to manage airline operatio
 - Secure communication between services using RabbitMQ
 
 ## Postman Collection
-https://www.postman.com/telecoms-participant-7347918
+https://www.postman.com/telecoms-participant-7347918/workspace/airline-project/overview
