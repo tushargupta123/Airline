@@ -2,7 +2,7 @@ const sender = require('../config/emailConfig');
 const TicketRepository = require('../repository/ticket-repository')
 const repo = new TicketRepository();
 
-const sendBasicEmail = (mailFrom,mailTo,mailSubject,mailBody) => {
+const sendBasicEmail = ({mailFrom,mailTo,mailSubject,mailBody}) => {
     sender.sendMail({
         from: mailFrom,
         to: mailTo,
@@ -39,6 +39,7 @@ const updateTicket = async(ticketId,data) => {
 }
 
 const subscribeEvents = async(payload) => {
+    console.log(payload)
     let service = payload.service;
     let data = payload.data;
     switch (service) {

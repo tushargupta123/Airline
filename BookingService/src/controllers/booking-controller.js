@@ -9,13 +9,20 @@ class BookingController {
     async sendMessageToQueue(req, res) {
         const channel = await createChannel();
         const payload = {
+            // data: {
+            //     subject: 'This is a notification from queue 2',
+            //     content: 'Some queue will subscribe this',
+            //     recepientEmail: "tushargupta2k3@gmail.com",
+            //     notificationTime: '2024-06-20T16:51:00'
+            // },
+            // service: 'CREATE_TICKET'
             data: {
-                subject: 'This is a notification from queue 2',
-                content: 'Some queue will subscribe this',
-                recepientEmail: "tushargupta2k3@gmail.com",
-                notificationTime: '2024-06-20T16:51:00'
+                mailSubject: 'This is a notification from booking service',
+                mailBody: 'hi there you have a notification.',
+                mailFrom: "tushargupta2k3@gmail.com",
+                mailTo: 'tushargupta2k3@gmail.com'
             },
-            service: 'CREATE_TICKET'
+            service: 'SEND_BASIC_MAIL'
         }
         publishMessage(channel, REMINDER_BINDING_KEY, JSON.stringify(payload));
         return res.status(StatusCodes.OK).json({

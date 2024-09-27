@@ -39,3 +39,10 @@ after adding seed data
 
 If we want to add new fields in existing migration
 --> npx sequelize migration:create --name add_new_fields
+
+
+
+RABBITMQ setup ->
+
+search RabbitMQ Service - Start
+check locally on http://localhost:15672/
